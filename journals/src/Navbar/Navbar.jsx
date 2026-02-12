@@ -25,7 +25,7 @@ const Navbar = () => {
     { name: "About Us", href: "/about" },
     { name: "Journal Portfolio ", href: "/journals" },
     { name: "For Authors", href: "/for-authors" },
-    { name: "For Reviewers", href: "/for-reviewers " }, // Shortened for better fit
+    { name: "For Reviewers", href: "/for-reviewers" }, // Shortened for better fit
     { name: "Editorial Board", href: "/editorial-board" },
     { name: "Publication Ethics", href: "/ethics" },
     { name: "News", href: "/news" },

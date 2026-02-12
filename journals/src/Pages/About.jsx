@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-
+import { useNavigate } from "react-router-dom";
 // Custom hook for counting animation
+
 const useCounter = (end, duration = 2000) => {
   const [count, setCount] = useState(0);
   const countRef = useRef(null);
-
+  
   useEffect(() => {
     let startTime = null;
     let animationFrameId;
@@ -41,6 +42,7 @@ const useCounter = (end, duration = 2000) => {
       observer.observe(countRef.current);
     }
 
+
     return () => {
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       if (countRef.current) observer.unobserve(countRef.current); // Cleanup observer
@@ -71,6 +73,11 @@ const StatCard = ({ label, value, colorClass }) => {
 };
 
 const About = () => {
+  const navigation=useNavigate();
+  const HandleButton=()=>{
+navigation("/about")
+ window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-16">
@@ -120,7 +127,7 @@ platform for scholarly communication.
 
         {/* Bottom CTA or Decoration */}
         <div className="pt-12 text-center border-t border-gray-200">
-          <button className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200">
+          <button className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200 cursor-pointer" onClick={HandleButton}>
             Learn More About Our Process
           </button>
         </div>
