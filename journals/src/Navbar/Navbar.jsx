@@ -56,16 +56,16 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden xl:flex items-center space-x-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 group ${
                   scrolled ? "text-gray-600 hover:text-blue-600" : "text-gray-700 hover:text-blue-600"
                 }`}
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -121,14 +121,14 @@ const Navbar = () => {
           
           <div className="flex-1 overflow-y-auto px-2 py-4 space-y-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 onClick={() => setOpen(false)}
                 className="block px-3 py-2.5 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 {/*           
