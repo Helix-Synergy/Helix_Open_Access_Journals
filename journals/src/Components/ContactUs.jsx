@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+const api=import.meta.env.VITE_JOURNALS_FORM_API
 const InputField = ({ label, icon: Icon, type = "text", textarea = false }) => {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState("");
@@ -99,7 +99,7 @@ try {
         message: form[2].value,
       };
 
-      await axios.post("http://localhost:5000/form/journalsform", payload);
+      await axios.post(`${api}/form/journalsform`, payload);
 
       setSending(false);
       setSent(true);
