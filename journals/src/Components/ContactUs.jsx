@@ -17,6 +17,8 @@ import {
   AtSign,
   ArrowRight,
 } from "lucide-react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const InputField = ({ label, icon: Icon, type = "text", textarea = false }) => {
   const [focused, setFocused] = useState(false);
@@ -85,16 +87,32 @@ const ContactUs = () => {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => {
+try {
+      const form = e.target;
+
+      const payload = {
+        name: form[0].value,
+        email: form[1].value,
+        message: form[2].value,
+      };
+
+      await axios.post("http://localhost:5000/form/journalsform", payload);
+
       setSending(false);
       setSent(true);
-      setTimeout(() => setSent(false), 3000);
-    }, 2000);
-  };
+      toast.success("Message sent successfully!");
 
+      form.reset();
+      setTimeout(() => setSent(false), 3000);
+    } catch (error) {
+      setSending(false);
+      toast.error("Failed to send message!");
+      console.error(error);
+    }
+  };
   // 3D Tilt Logic for the form card
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -225,7 +243,7 @@ const ContactUs = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                     >
-                      <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin cursor-pointer" />
                     </motion.div>
                   ) : sent ? (
                     <motion.div
@@ -245,7 +263,7 @@ const ContactUs = () => {
                       exit={{ opacity: 0, y: -10 }}
                       className="flex items-center gap-2"
                     >
-                      <span>Send Message</span>
+                      <span >Send Message</span>
                       <ArrowRight className="w-5 h-5" />
                     </motion.div>
                   )}

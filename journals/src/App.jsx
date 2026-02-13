@@ -13,6 +13,9 @@ import Publicationsethics from "./Components/Publicationsethics";
 import News from "./Components/News";
 import ContactUs from "./Components/ContactUs"
 import ScrollToTop from "./Pages/ScrollToTop";
+import Footer from "./Pages/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -27,6 +30,7 @@ const App = () => {
   }
   return (
     <div className="min-h-screen bg-gray-50">
+      <ToastContainer position="top-right" autoClose={3000} />
       <Navbar />
       <ScrollToTop/>
       <Routes>
@@ -40,6 +44,7 @@ const App = () => {
         <Route path="/news" element={<News />} />
 <Route path="/contact" element={<ContactUs />} />
       </Routes>
+      <Footer/>
     </div>
   );
 };

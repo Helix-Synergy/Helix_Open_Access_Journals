@@ -1,8 +1,13 @@
 import React from "react";
 import { ShieldCheck, Clock, Scale, Lock, Award, Globe, UserPlus } from "lucide-react";
 import { FaOrcid } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const ForReviewer = () => {
+  const navigate=useNavigate();
+  const HandleApply=()=>{
+navigate("/contact")
+  }
   return (
     <section className="pt-28 pb-20 bg-gradient-to-br from-slate-50 via-white to-sky-50 text-slate-900">
       <div className="max-w-6xl mx-auto px-6 space-y-16">
@@ -79,7 +84,7 @@ const ForReviewer = () => {
 
         {/* CTA */}
         <div className="text-center pt-10">
-          <h3 className="text-2xl font-semibold mb-4">
+          <h3 className="text-2xl font-semibold mb-4" >
             Join as a Reviewer
           </h3>
 
@@ -87,7 +92,7 @@ const ForReviewer = () => {
             Online registration with verified academic credentials.
           </p>
 
-          <button className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-600 px-8 py-3 font-semibold text-white shadow-md hover:scale-105 hover:shadow-indigo-500/30 transition-all duration-300">
+          <button className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-cyan-600 px-8 py-3 font-semibold text-white shadow-md hover:scale-105 hover:shadow-indigo-500/30 transition-all duration-300 cursor-pointer" onClick={HandleApply}>
             <UserPlus className="w-5 h-5" />
             Apply Now
           </button>
